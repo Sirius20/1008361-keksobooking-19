@@ -65,7 +65,7 @@ arrAdsСreation();
 var renderPin = function (ad) {
   var pinElement = pinTemplate.cloneNode(true);
 
-  pinElement.querySelector('.map__pin').style = 'left: ' + (ad.location.x - WIDTH_PIN  / 2) + 'px; top: ' + (ad.location.y - WIDTH_PIN) + 'px';
+  pinElement.querySelector('.map__pin').style = 'left: ' + (ad.location.x - WIDTH_PIN / 2) + 'px; top: ' + (ad.location.y - WIDTH_PIN) + 'px';
   pinElement.querySelector('.map__pin img').src = ad.author.avatar;
   pinElement.querySelector('.map__pin img').alt = ad.offer.title;
 
