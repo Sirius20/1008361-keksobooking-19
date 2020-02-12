@@ -14,8 +14,7 @@ var ads = [];
 var map = document.querySelector('.map');
 var mapPins = map.querySelector('.map__pins');
 var pinTemplate = document.querySelector('#pin')
-.content
-.querySelector('.map__pin');
+.content;
 
 map.classList.remove('map--faded');
 
@@ -53,7 +52,7 @@ var arrAdsСreation = function () {
         photos: AD_PHOTOS,
       },
       location: {
-        x: map.offsetWidth,
+        x: getRandomNumberMinMax(1, map.offsetWidth),
         y: getRandomNumberMinMax(130, 630),
       }
     };
@@ -63,14 +62,12 @@ var arrAdsСreation = function () {
 
 arrAdsСreation();
 
-console.log(ads);
-
 var renderPin = function (ad) {
   var pinElement = pinTemplate.cloneNode(true);
 
-  pinElement.style = 'left:' + ad.location.x - WIDTH_PIN / 2; + 'top:' + ad.location.y - WIDTH_PIN;
-  pinElement.src = ad.author.avatar;
-  pinElement.alt = ad.title;
+  pinElement.querySelector('.map__pin').style = 'left: ' + (ad.location.x - WIDTH_PIN  / 2) + 'px; top: ' + (ad.location.y - WIDTH_PIN) + 'px';
+  pinElement.querySelector('.map__pin img').src = ad.author.avatar;
+  pinElement.querySelector('.map__pin img').alt = ad.offer.title;
 
   return pinElement;
 };
@@ -85,4 +82,4 @@ var getFragment = function () {
 };
 
 getFragment();
-console.log(getFragment());
+
