@@ -30,7 +30,7 @@ var getRandomNumberMinMax = function (min, max) {
 
 var getRandomLength = function (arr) {
   var arrLength = [];
-  for(var t = 0; t < getRandomNumber(arr); t++) {
+  for (var t = 0; t < getRandomNumber(arr); t++) {
     arrLength[t] = arr[t];
   }
 
