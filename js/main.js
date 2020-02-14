@@ -20,7 +20,6 @@ var mapPins = map.querySelector('.map__pins');
 var pinTemplate = document.querySelector('#pin')
 .content
 .querySelector('.map__pin');
-var imgChange = pinElement.querySelector('img');
 
 map.classList.remove('map--faded');
 
@@ -74,7 +73,7 @@ getAds();
 
 var renderPin = function (ad) {
   var pinElement = pinTemplate.cloneNode(true);
-
+  var imgChange = pinElement.querySelector('img');
   pinElement.style = 'left: ' + (ad.location.x - WIDTH_PIN / 2) + 'px; top: ' + (ad.location.y - WIDTH_PIN) + 'px';
   imgChange.src = ad.author.avatar;
   imgChange.alt = ad.offer.title;
