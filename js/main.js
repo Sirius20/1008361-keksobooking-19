@@ -2,7 +2,10 @@
 
 var QUANTITY_ADS = 8;
 var WIDTH_PIN = 65;
-var AD_PRICES = [0, 1000, 5000, 10000];
+var AD_PRICE_MIN = 0;
+var AD_PRICE_MAX = 10000;
+var AD_GUESTS_ROOMS_MIN = 1;
+var AD_GUESTS_ROOMS_MAX = 5;
 var AD_TITLES = ['Двухкомнатная квартира с видом на океан!', 'Трехкомнатная квартира для семейного отдыха', 'Роскошные апартаменты'];
 var AD_TYPES = ['palace', 'flat', 'house', 'bungalo'];
 var ADS_CHECK = ['12:00', '13:00', '14:00'];
@@ -17,6 +20,7 @@ var mapPins = map.querySelector('.map__pins');
 var pinTemplate = document.querySelector('#pin')
 .content
 .querySelector('.map__pin');
+var imgChange = pinElement.querySelector('img');
 
 map.classList.remove('map--faded');
 
@@ -47,10 +51,10 @@ var getAds = function () {
       offer: {
         title: AD_TITLES[getRandomNumber(AD_TITLES)],
         address: adAddress,
-        price: AD_PRICES[getRandomNumber(AD_PRICES)],
+        price: getRandomNumberMinMax(AD_PRICE_MIN, AD_PRICE_MAX),
         type: AD_TYPES[getRandomNumber(AD_TYPES)],
-        rooms: getRandomNumberMinMax(1, 5),
-        guests: getRandomNumberMinMax(1, 5),
+        rooms: getRandomNumberMinMax(AD_GUESTS_ROOMS_MIN, AD_GUESTS_ROOMS_MAX),
+        guests: getRandomNumberMinMax(AD_GUESTS_ROOMS_MIN, AD_GUESTS_ROOMS_MAX),
         checkin: ADS_CHECK[getRandomNumber(ADS_CHECK)],
         checkout: ADS_CHECK[getRandomNumber(ADS_CHECK)],
         features: getRandomLength(AD_FEATURES),
@@ -72,8 +76,8 @@ var renderPin = function (ad) {
   var pinElement = pinTemplate.cloneNode(true);
 
   pinElement.style = 'left: ' + (ad.location.x - WIDTH_PIN / 2) + 'px; top: ' + (ad.location.y - WIDTH_PIN) + 'px';
-  pinElement.querySelector('img').src = ad.author.avatar;
-  pinElement.querySelector('img').alt = ad.offer.title;
+  imgChange.src = ad.author.avatar;
+  imgChange.alt = ad.offer.title;
 
   return pinElement;
 };
