@@ -2,6 +2,7 @@
 
 var QUANTITY_ADS = 8;
 var WIDTH_PIN = 65;
+var AD_PRICES = [0, 1000, 5000, 10000];
 var AD_TITLES = ['Двухкомнатная квартира с видом на океан!', 'Трехкомнатная квартира для семейного отдыха', 'Роскошные апартаменты'];
 var AD_TYPES = ['palace', 'flat', 'house', 'bungalo'];
 var ADS_CHECK = ['12:00', '13:00', '14:00'];
@@ -9,7 +10,7 @@ var AD_FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'condi
 var AD_DESCRIPTIONS = ['Все необходимые удобства и красивый вид из окна.', 'Удобное месторасположение, рядом исторический музей и ТРЦ.'];
 var AD_PHOTOS = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
 
-var adAdress = '350, 340';
+var adAddress = '350, 340';
 var ads = [];
 var map = document.querySelector('.map');
 var mapPins = map.querySelector('.map__pins');
@@ -45,11 +46,11 @@ var getAds = function () {
       },
       offer: {
         title: AD_TITLES[getRandomNumber(AD_TITLES)],
-        address: adAdress,
-        price: getRandomNumberMinMax(2000, 6000),
+        address: adAddress,
+        price: AD_PRICES[getRandomNumber(AD_PRICES)],
         type: AD_TYPES[getRandomNumber(AD_TYPES)],
         rooms: getRandomNumberMinMax(1, 5),
-        guests: getRandomNumberMinMax(1, 8),
+        guests: getRandomNumberMinMax(1, 5),
         checkin: ADS_CHECK[getRandomNumber(ADS_CHECK)],
         checkout: ADS_CHECK[getRandomNumber(ADS_CHECK)],
         features: getRandomLength(AD_FEATURES),
@@ -71,8 +72,8 @@ var renderPin = function (ad) {
   var pinElement = pinTemplate.cloneNode(true);
 
   pinElement.style = 'left: ' + (ad.location.x - WIDTH_PIN / 2) + 'px; top: ' + (ad.location.y - WIDTH_PIN) + 'px';
-  pinElement.querySelector('.map__pin img').src = ad.author.avatar;
-  pinElement.querySelector('.map__pin img').alt = ad.offer.title;
+  pinElement.querySelector('img').src = ad.author.avatar;
+  pinElement.querySelector('img').alt = ad.offer.title;
 
   return pinElement;
 };
