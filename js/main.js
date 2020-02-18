@@ -9,7 +9,7 @@ var AD_PRICE_MAX = 10000;
 var AD_GUESTS_ROOMS_MIN = 1;
 var AD_GUESTS_ROOMS_MAX = 3;
 var ENTER = 'Enter';
-//var ESC = 'Escape';
+// var ESC = 'Escape';
 var AD_TITLES = ['Двухкомнатная квартира с видом на океан!', 'Трехкомнатная квартира для семейного отдыха', 'Роскошные апартаменты'];
 var AD_TYPES = ['palace', 'flat', 'house', 'bungalo'];
 var ADS_CHECK = ['12:00', '13:00', '14:00'];
@@ -116,52 +116,56 @@ var searchAddress = function () {
 };
 
 
-mapPinMain.addEventListener ('mousedown', function(evt) {
+mapPinMain.addEventListener('mousedown', function (evt) {
   if (evt.button === LEFT_BUTTON) {
     getActivation();
     searchAddress();
   }
 }); // активация через мышь
 
-mapPinMain.addEventListener ('keydown', function(evt) {
+mapPinMain.addEventListener('keydown', function (evt) {
   if (evt.key === ENTER) {
     getActivation();
     searchAddress();
   }
 }); // активация через энтр
 
-adForm.addEventListener ('change', function() {
+adForm.addEventListener('change', function () {
   if (roomQuantity.value === '1' && guestQuantity.value === '2' ||
   roomQuantity.value === '1' && guestQuantity.value === '3' ||
   roomQuantity.value === '1' && guestQuantity.value === '0') {
 
     guestQuantity.setCustomValidity('Только одно спальное место!');
-  } else if (roomQuantity.value === '1' && guestQuantity.value === '1') 
-    {guestQuantity.setCustomValidity(''); }
+  } else if (roomQuantity.value === '1' && guestQuantity.value === '1') {
+    guestQuantity.setCustomValidity('');
+  }
 
   if (roomQuantity.value === '2' && guestQuantity.value === '3' ||
   roomQuantity.value === '2' && guestQuantity.value === '0') {
 
     guestQuantity.setCustomValidity('Только два спальных места!');
   } else if (roomQuantity.value === '2' && guestQuantity.value === '2' ||
-    roomQuantity.value === '2' && guestQuantity.value === '1') 
-    {guestQuantity.setCustomValidity(''); }
+    roomQuantity.value === '2' && guestQuantity.value === '1') {
+    guestQuantity.setCustomValidity('');
+  }
 
   if (roomQuantity.value === '3' && guestQuantity.value === '0') {
 
     guestQuantity.setCustomValidity('Только три спальных места!');
   } else if (roomQuantity.value === '3' && guestQuantity.value === '3' ||
     roomQuantity.value === '3' && guestQuantity.value === '2' ||
-    roomQuantity.value === '3' && guestQuantity.value === '1') 
-    {guestQuantity.setCustomValidity(''); }
+    roomQuantity.value === '3' && guestQuantity.value === '1') {
+    guestQuantity.setCustomValidity('');
+  }
 
   if (roomQuantity.value === '100' && guestQuantity.value === '3' ||
   roomQuantity.value === '100' && guestQuantity.value === '2' ||
   roomQuantity.value === '100' && guestQuantity.value === '1') {
 
     guestQuantity.setCustomValidity('Нежилое помещение');
-  } else if (roomQuantity.value === '100' && guestQuantity.value === '0') 
-  {guestQuantity.setCustomValidity(''); }
+  } else if (roomQuantity.value === '100' && guestQuantity.value === '0') {
+    guestQuantity.setCustomValidity('');
+  }
 });
 
 getAds();
