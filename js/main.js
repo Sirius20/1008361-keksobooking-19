@@ -25,7 +25,7 @@ var pinTemplate = document.querySelector('#pin')
 .content
 .querySelector('.map__pin');
 var adForm = document.querySelector('.ad-form');
-// var fieldDisabled = document.querySelectorAll('fieldset');
+var fieldDisabled = document.querySelectorAll('fieldset');
 var mapFilters = document.querySelector('.map__filters');
 var mapPinMain = mapPins.querySelector('.map__pin--main');
 var inputAddress = adForm.querySelector('input[name=address]'); // строка адреса
@@ -33,10 +33,16 @@ var roomQuantity = adForm.querySelector('#room_number');
 var guestQuantity = adForm.querySelector('#capacity');
 
 var mapPinX = Math.round(mapPinMain.offsetLeft + WIDTH_PIN / 2);
-var mapPinY = Math.round(mapPinMain.offsetTop + WIDTH_PIN / 2); // кординаты метки
-mapFilters.classList.add('.ad-form--disabled'); // блокировка фильтров
-// fieldDisabled.setAttribute('disabled', 'disabled'); // блокировка филдсетов по всему документу, не работает
-inputAddress.value = 'left: ' + mapPinX + '; top: ' + mapPinY + ';'; // коородината центра метки в неактиве
+var mapPinY = Math.round(mapPinMain.offsetTop + WIDTH_PIN / 2); 
+
+var getStartPage = function () {
+  mapFilters.classList.add('ad-form--disabled'); 
+
+  for (var f = 0; f < fieldDisabled.length; f++) {
+  fieldDisabled[f].setAttribute('disabled', 'disabled');
+  }
+  inputAddress.value = 'left: ' + mapPinX + '; top: ' + mapPinY + ';'; 
+};
 
 var getRandomNumber = function (adArr) {
   return Math.floor(Math.random() * adArr.length);
@@ -106,7 +112,9 @@ var getActivation = function () {
   map.classList.remove('map--faded');
   adForm.classList.remove('ad-form--disabled');
   mapFilters.classList.remove('ad-form--disabled');
-  // fieldDisabled.remove('disabled'); // отмена блокировки, тоже не функция
+  for (var r = 0; r < fieldDisabled.length; r++) {
+    fieldDisabled[r].removeAttribute('disabled');
+    }
   getFragment();
 };
 
@@ -169,3 +177,4 @@ adForm.addEventListener('change', function () {
 });
 
 getAds();
+getStartPage();
