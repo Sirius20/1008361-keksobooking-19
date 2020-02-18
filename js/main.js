@@ -27,6 +27,7 @@ var pinTemplate = document.querySelector('#pin')
 var adForm = document.querySelector('.ad-form');
 var fieldDisabled = document.querySelectorAll('fieldset');
 var mapFilters = document.querySelector('.map__filters');
+var blockSelect = mapFilters.querySelectorAll('select');
 var mapPinMain = mapPins.querySelector('.map__pin--main');
 var inputAddress = adForm.querySelector('input[name=address]'); // строка адреса
 var roomQuantity = adForm.querySelector('#room_number');
@@ -36,10 +37,13 @@ var mapPinX = Math.round(mapPinMain.offsetLeft + WIDTH_PIN / 2);
 var mapPinY = Math.round(mapPinMain.offsetTop + WIDTH_PIN / 2);
 
 var getStartPage = function () {
-  mapFilters.classList.add('ad-form--disabled');
+  mapFilters.setAttribute('disabled', 'disabled');
 
   for (var f = 0; f < fieldDisabled.length; f++) {
     fieldDisabled[f].setAttribute('disabled', 'disabled');
+  }
+  for (var s = 0; s < blockSelect.length; s++) {
+    blockSelect[s].setAttribute('disabled', 'disabled');
   }
   inputAddress.value = 'left: ' + mapPinX + '; top: ' + mapPinY + ';';
 };
@@ -111,9 +115,12 @@ var getFragment = function () {
 var getActivation = function () {
   map.classList.remove('map--faded');
   adForm.classList.remove('ad-form--disabled');
-  mapFilters.classList.remove('ad-form--disabled');
+  mapFilters.removeAttribute('disabled');
   for (var r = 0; r < fieldDisabled.length; r++) {
     fieldDisabled[r].removeAttribute('disabled');
+  }
+  for (var b = 0; b < blockSelect.length; b++) {
+    blockSelect[b].removeAttribute('disabled');
   }
   getFragment();
 };
