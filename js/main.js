@@ -1,6 +1,7 @@
 'use strict';
 
 var QUANTITY_ADS = 8;
+var AD_ADDRESS = '350, 340';
 var WIDTH_PIN = 65;
 var WIDTH_PIN_TIP = 22;
 var LEFT_BUTTON = 0;
@@ -24,15 +25,18 @@ var pinTemplate = document.querySelector('#pin')
 .content
 .querySelector('.map__pin');
 var adForm = document.querySelector('.ad-form');
-var fieldDisabled = document.querySelectorAll('fieldset').setAttribute('disabled', 'disabled'); // блокировка филдсетов по всему документу, не работает
+var fieldDisabled = document.querySelectorAll('fieldset')
 var mapFilters = document.querySelector('.map__filters');
 var mapPinMain = mapPins.querySelector('.map__pin--main');
 var inputAddress = adForm.querySelector('input[name=address]'); // строка адреса
-var adAddress = '350, 340';
-var cenetrPinX = Math.round(mapPinMain.offsetLeft + WIDTH_PIN / 2);
-var cenetrPinY = Math.round(mapPinMain.offsetTop + WIDTH_PIN / 2); // кординаты метки
 var roomQuantity = adForm.querySelector('#room_number');
 var guestQuantity = adForm.querySelector('#capacity');
+
+var mapPinX = Math.round(mapPinMain.offsetLeft + WIDTH_PIN / 2);
+var mapPinY = Math.round(mapPinMain.offsetTop + WIDTH_PIN / 2); // кординаты метки
+mapFilters.classList.add('.ad-form--disabled'); // блокировка фильтров
+//fieldDisabled.setAttribute('disabled', 'disabled'); // блокировка филдсетов по всему документу, не работает
+inputAddress.value = 'left: ' + mapPinX + '; top: ' + mapPinY + ';'; // коородината центра метки в неактиве
 
 var getRandomNumber = function (adArr) {
   return Math.floor(Math.random() * adArr.length);
@@ -59,7 +63,7 @@ var getAds = function () {
       },
       offer: {
         title: AD_TITLES[getRandomNumber(AD_TITLES)],
-        address: adAddress,
+        address: AD_ADDRESS,
         price: getRandomNumberMinMax(AD_PRICE_MIN, AD_PRICE_MAX),
         type: AD_TYPES[getRandomNumber(AD_TYPES)],
         rooms: getRandomNumberMinMax(AD_GUESTS_ROOMS_MIN, AD_GUESTS_ROOMS_MAX),
@@ -95,7 +99,6 @@ var getFragment = function () {
     fragment.appendChild(renderPin(ads[j]));
   }
   mapPins.appendChild(fragment);
-  return mapPins;
 };
 
 // функция активации
@@ -103,16 +106,14 @@ var getActivation = function () {
   map.classList.remove('map--faded');
   adForm.classList.remove('ad-form--disabled');
   mapFilters.classList.remove('ad-form--disabled');
-  fieldDisabled.remove('disabled'); // отмена блокировки, тоже не функция
+  //fieldDisabled.remove('disabled'); // отмена блокировки, тоже не функция
   getFragment();
 };
 
 var searchAddress = function () {
-  var mapPinX = Math.round(mapPinMain.offsetLeft + WIDTH_PIN / 2);
-  var mapPinY = Math.round(mapPinMain.offsetTop + WIDTH_PIN + WIDTH_PIN_TIP);
-  inputAddress.value = 'left: ' + mapPinX + '; top: ' + mapPinY + ';';
+  var tipPinY = Math.round(mapPinMain.offsetTop + WIDTH_PIN + WIDTH_PIN_TIP);
+  inputAddress.value = 'left: ' + mapPinX + '; top: ' + tipPinY + ';';
 
-  return inputAddress.value;
 };
 
 
@@ -169,5 +170,4 @@ adForm.addEventListener('change', function () {
 });
 
 getAds();
-mapFilters.classList.add('.ad-form--disabled'); // блокировка фильтров
-inputAddress.value = 'left: ' + cenetrPinX + '; top: ' + cenetrPinY + ';'; // коородината центра метки в неактиве
+
