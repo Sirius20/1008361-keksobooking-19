@@ -39,7 +39,7 @@ var mapPinY = Math.round(mapPinMain.offsetTop + WIDTH_PIN / 2);
 var getStartPage = function () {
   mapFilters.classList.add('ad-form--disabled');
   mapFilters.setAttribute('disabled', 'disabled');
-  
+
   for (var f = 0; f < fieldsDisabled.length; f++) {
     fieldsDisabled[f].setAttribute('disabled', 'disabled');
   }
