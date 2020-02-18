@@ -33,15 +33,15 @@ var roomQuantity = adForm.querySelector('#room_number');
 var guestQuantity = adForm.querySelector('#capacity');
 
 var mapPinX = Math.round(mapPinMain.offsetLeft + WIDTH_PIN / 2);
-var mapPinY = Math.round(mapPinMain.offsetTop + WIDTH_PIN / 2); 
+var mapPinY = Math.round(mapPinMain.offsetTop + WIDTH_PIN / 2);
 
 var getStartPage = function () {
-  mapFilters.classList.add('ad-form--disabled'); 
+  mapFilters.classList.add('ad-form--disabled');
 
   for (var f = 0; f < fieldDisabled.length; f++) {
-  fieldDisabled[f].setAttribute('disabled', 'disabled');
+    fieldDisabled[f].setAttribute('disabled', 'disabled');
   }
-  inputAddress.value = 'left: ' + mapPinX + '; top: ' + mapPinY + ';'; 
+  inputAddress.value = 'left: ' + mapPinX + '; top: ' + mapPinY + ';';
 };
 
 var getRandomNumber = function (adArr) {
@@ -114,7 +114,7 @@ var getActivation = function () {
   mapFilters.classList.remove('ad-form--disabled');
   for (var r = 0; r < fieldDisabled.length; r++) {
     fieldDisabled[r].removeAttribute('disabled');
-    }
+  }
   getFragment();
 };
 
