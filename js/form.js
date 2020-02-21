@@ -39,7 +39,7 @@
 
       guestQuantity.setCustomValidity('Нежилое помещение');
     } else if (roomQuantity.value === '100' && guestQuantity.value === '0') {
-    guestQuantity.setCustomValidity('');
+      guestQuantity.setCustomValidity('');
     }
   };
 
