@@ -1,3 +1,5 @@
+'use strict';
+
 (function () {
   var map = document.querySelector('.map');
   var mapPins = map.querySelector('.map__pins');
@@ -12,16 +14,16 @@
   var mapPinY = Math.round(mapPinMain.offsetTop + window.constants.WIDTH_PIN / 2);
 
   var getStartPage = function () {
-  mapFilters.classList.add('ad-form--disabled');
-  mapFilters.setAttribute('disabled', 'disabled');
+    mapFilters.classList.add('ad-form--disabled');
+    mapFilters.setAttribute('disabled', 'disabled');
 
-  for (var f = 0; f < fieldsDisabled.length; f++) {
-    fieldsDisabled[f].setAttribute('disabled', 'disabled');
-  }
-  for (var s = 0; s < blockSelects.length; s++) {
-    blockSelects[s].setAttribute('disabled', 'disabled');
-  }
-  inputAddress.value = 'left: ' + mapPinX + '; top: ' + mapPinY + ';';
+    for (var f = 0; f < fieldsDisabled.length; f++) {
+      fieldsDisabled[f].setAttribute('disabled', 'disabled');
+    }
+    for (var s = 0; s < blockSelects.length; s++) {
+      blockSelects[s].setAttribute('disabled', 'disabled');
+    }
+    inputAddress.value = 'left: ' + mapPinX + '; top: ' + mapPinY + ';';
   };
 
   window.start = {

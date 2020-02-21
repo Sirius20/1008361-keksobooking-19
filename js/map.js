@@ -1,3 +1,5 @@
+'use strict';
+
 (function () {
   var map = document.querySelector('.map');
   var adForm = document.querySelector('.ad-form');
@@ -10,14 +12,14 @@
       window.active.searchAddress();
     }
   });
-  
+
   mapPinMain.addEventListener('keydown', function (evt) {
     if (evt.key === window.constants.ENTER) {
       window.active.getActivation();
       window.active.searchAddress();
     }
-  }); 
+  });
 
-  window.start.getStartPage()
+  window.start.getStartPage();
   adForm.addEventListener('change', window.form.onFormChange);
 })();

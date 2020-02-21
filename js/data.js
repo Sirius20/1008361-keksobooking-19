@@ -1,3 +1,5 @@
+'use strict';
+
 (function () {
   var QUANTITY_ADS = 8;
   var AD_ADDRESS = '350, 340';
@@ -18,20 +20,20 @@
   var getRandomNumber = function (adArr) {
     return Math.floor(Math.random() * adArr.length);
   };
-  
+
   var getRandomNumberMinMax = function (min, max) {
     return Math.floor(Math.random() * (max - min) + min);
   };
-  
+
   var getRandomLength = function (arr) {
     var arrLength = [];
     for (var t = 0; t < getRandomNumber(arr); t++) {
       arrLength[t] = arr[t];
     }
-  
+
     return arrLength;
   };
-  
+
   var getAds = function () {
     for (var i = 0; i < QUANTITY_ADS; i++) {
       ads[i] = {
