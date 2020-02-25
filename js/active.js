@@ -10,14 +10,6 @@
   var mapPinMain = mapPins.querySelector('.map__pin--main');
   var inputAddress = adForm.querySelector('input[name=address]');
 
-  var getFragment = function () {
-    var fragment = document.createDocumentFragment();
-    for (var j = 0; j < window.data.ads.length; j++) {
-      fragment.appendChild(window.pin.renderPin(window.data.ads[j]));
-    }
-    mapPins.appendChild(fragment);
-  };
-
   var getActivation = function () {
     map.classList.remove('map--faded');
     adForm.classList.remove('ad-form--disabled');
@@ -29,7 +21,7 @@
     for (var b = 0; b < blockSelects.length; b++) {
       blockSelects[b].removeAttribute('disabled');
     }
-    getFragment();
+    window.load(window.data.successHandler, window.data.errorHandler);
   };
 
   var searchAddress = function () {
