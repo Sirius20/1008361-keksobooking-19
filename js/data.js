@@ -7,12 +7,12 @@
 
   var successHandler = function (ads) {
     var fragment = document.createDocumentFragment();
-      for (var i = 0; i < ads.length; i++) {
-        fragment.appendChild(window.pin.renderPin(ads[i]));
-      }
-      mapPins.appendChild(fragment);
+    for (var i = 0; i < ads.length; i++) {
+      fragment.appendChild(window.pin.renderPin(ads[i]));
+    }
+    mapPins.appendChild(fragment);
   };
-      
+
   var errorHandler = function (errorMessage) {
     var node = document.createElement('div');
     node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
@@ -20,16 +20,16 @@
     node.style.left = 0;
     node.style.right = 0;
     node.style.fontSize = '30px';
-        
-    node.textContent = errorMessage; 
+
+    node.textContent = errorMessage;
     document.body.insertAdjacentElement('afterbegin', node);
   };
-  
+
   window.data = {
     successHandler: successHandler,
     errorHandler: errorHandler
   };
-  
+
   // var getRandomNumber = function (adArr) {
   //   return Math.floor(Math.random() * adArr.length);
   // };
