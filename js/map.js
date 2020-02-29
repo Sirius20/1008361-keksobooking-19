@@ -2,6 +2,7 @@
 
 (function () {
   var map = document.querySelector('.map');
+  var filtersContainer = map.querySelector('.map__filters-container');
   var adForm = document.querySelector('.ad-form');
   var mapPins = map.querySelector('.map__pins');
   var mapPinMain = mapPins.querySelector('.map__pin--main');
@@ -21,5 +22,6 @@
   });
 
   window.start.getStartPage();
+  filtersContainer.insertAdjacentHTML('afterend', window.card.getFragment);
   adForm.addEventListener('change', window.form.onFormChange);
 })();
