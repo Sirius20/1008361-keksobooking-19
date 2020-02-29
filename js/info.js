@@ -2,15 +2,14 @@
 
 (function () {
 
-  var map = document.querySelector('.map');
-  var mapPins = map.querySelector('.map__pins');
+  var mapFilters = document.querySelector('.map__filters');
+  var houseType = mapFilters.querySelector('#housing-type');
+  var checkCollect = houseType.querySelectorAll('checked');
+  var ads = [];
 
-  var successHandler = function (ads) {
-    var fragment = document.createDocumentFragment();
-    for (var i = 0; i < ads.length; i++) {
-      fragment.appendChild(window.pin.renderPin(ads[i]));
-    }
-    mapPins.appendChild(fragment);
+  var successHandler = function (data) {
+    ads = data;
+    window.pin.render(ads);
   };
 
   var errorHandler = function (errorMessage) {
@@ -25,7 +24,7 @@
     document.body.insertAdjacentElement('afterbegin', node);
   };
 
-  window.data = {
+  window.info = {
     successHandler: successHandler,
     errorHandler: errorHandler
   };
