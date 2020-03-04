@@ -11,7 +11,7 @@
     var fragmentTwo = document.createDocumentFragment();
     for (var i = 0; i < ads.length; i++) {
       fragment.appendChild(window.pin.renderPin(ads[i]));
-      fragmentTwo.appendChild(window.card.renderCard(ads[2]));
+      fragmentTwo.appendChild(window.card.renderCard(ads[i]));
     }
     mapPins.appendChild(fragment);
     map.insertBefore(fragmentTwo, filtersContainer);
