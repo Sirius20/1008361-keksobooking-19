@@ -15,7 +15,7 @@
       return 'Бунгало';
     } else if (arr === 'house') {
       return 'Дом';
-    } 
+    }
     return 'Дворец';
   };
 
@@ -64,7 +64,7 @@
     var cardElement = cardTemplate.cloneNode(true);
     var cardFeatures = cardElement.querySelector('.popup__features');
     var cardPhotos = cardElement.querySelector('.popup__photos');
-    var cardClose = cardElement.querySelector('.popup__close');
+    // var cardClose = cardElement.querySelector('.popup__close');
 
     cardElement.querySelector('.popup__title').textContent = ad.offer.title;
     cardElement.querySelector('.popup__text--address').textContent = ad.offer.address;
