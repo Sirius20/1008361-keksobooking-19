@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 // var WIDTH_PIN = 65;
 // var WIDTH_PIN_TIP = 22;
@@ -21,9 +21,13 @@
 // var ads = [];
 // var map = document.querySelector('.map');
 // var mapPins = map.querySelector('.map__pins');
+// var filtersContainer = map.querySelector('.map__filters-container');
 // var pinTemplate = document.querySelector('#pin')
 // .content
 // .querySelector('.map__pin');
+// var cardTemplate = document.querySelector('#card')
+// .content
+// .querySelector('.map__card');
 // var adForm = document.querySelector('.ad-form');
 // var fieldsDisabled = document.querySelectorAll('fieldset');
 // var mapFilters = document.querySelector('.map__filters');
@@ -113,6 +117,32 @@
 //   mapPins.appendChild(fragment);
 // }; // функция отрисовки объявления MAP
 
+// var renderCard = function (ad) {
+//     var cardElement = cardTemplate.cloneNode(true);
+//     cardElement.querySelector('.popup__title').textContent = ad.offer.title;
+//     cardElement.querySelector('.popup__text--address').textContent = ad.offer.address;
+//     cardElement.querySelector('.popup__text--price').textContent = ad.offer.price;
+//     cardElement.querySelector('.popup__type').textContent = ad.offer.type;
+//     cardElement.querySelector('.popup__text--capacity').textContent = ad.offer.rooms + ' комнаты для ' + ad.offer.guests + 'гостей';
+//     cardElement.querySelector('.popup__text--time').textContent = 'Заезд после '+ ad.offer.checkin + ', выезд до ' + ad.offer.checkout;
+//     cardElement.querySelector('.popup__features').textContent = ad.offer.features;
+//     cardElement.querySelector('.popup__description').textContent = ad.offer.description;
+//     cardElement.querySelector('.popup__avatar').img.src = ad.author.avatar;
+//     cardElement.querySelector('.popup__photos').img.src = ad.offer.photos;
+
+//     return cardElement;
+// };
+
+// var getFragmentTwo = function () {
+//     var fragment = document.createDocumentFragment();
+//     for (var a = 0; a < ads.length; a++) {
+//       fragment.appendChild(renderCard(ads[a]));
+//     }
+//     map.insertBefore(fragment, filtersContainer);
+// };
+
+// getFragmentTwo();
+
 // var getActivation = function () {
 //   map.classList.remove('map--faded');
 //   adForm.classList.remove('ad-form--disabled');
@@ -147,7 +177,6 @@
 //   }
 // }); // активация через энтр
 
-// слушатель формы
 // adForm.addEventListener('change', function () {
 //   if (roomQuantity.value === '1' && guestQuantity.value === '2' ||
 //   roomQuantity.value === '1' && guestQuantity.value === '3' ||

@@ -4,13 +4,17 @@
 
   var map = document.querySelector('.map');
   var mapPins = map.querySelector('.map__pins');
+  var filtersContainer = map.querySelector('.map__filters-container');
 
   var successHandler = function (ads) {
     var fragment = document.createDocumentFragment();
+    var fragmentTwo = document.createDocumentFragment();
     for (var i = 0; i < ads.length; i++) {
       fragment.appendChild(window.pin.renderPin(ads[i]));
+      fragmentTwo.appendChild(window.card.renderCard(ads[2]));
     }
     mapPins.appendChild(fragment);
+    map.insertBefore(fragmentTwo, filtersContainer);
   };
 
   var errorHandler = function (errorMessage) {
