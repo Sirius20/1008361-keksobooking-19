@@ -129,7 +129,7 @@
 //     cardElement.querySelector('.popup__description').textContent = ad.offer.description;
 //     cardElement.querySelector('.popup__avatar').img.src = ad.author.avatar;
 //     cardElement.querySelector('.popup__photos').img.src = ad.offer.photos;
-  
+
 //     return cardElement;
 // };
 
