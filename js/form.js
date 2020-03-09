@@ -4,6 +4,10 @@
   var adForm = document.querySelector('.ad-form');
   var roomQuantity = adForm.querySelector('#room_number');
   var guestQuantity = adForm.querySelector('#capacity');
+  var adType = adForm.querySelector('#type');
+  var adPrice = adForm.querySelector('#price');
+  var adTimeIn = adForm.querySelector('#timein');
+  var adTimeOut = adForm.querySelector('#timeout');
 
   var onFormChange = function () {
     if (roomQuantity.value === '1' && guestQuantity.value === '2' ||
@@ -43,7 +47,48 @@
     }
   };
 
+  var onTypeChange = function () {
+    if (adType.value === 'bungalo') {
+      adPrice.step = '10';
+      adPrice.placeholder = '0';
+    } else if (adType.value === 'flat') {
+      adPrice.min = '1000';
+      adPrice.placeholder = '1000';
+    } else if (adType.value === 'house') {
+      adPrice.min = '5000';
+      adPrice.step = '5000';
+    } else if (adType.value === 'palace') {
+      adPrice.min = '10000';
+      adPrice.placeholder = '10000';
+      adPrice.step = '5000';
+    }
+  };
+
+  var onTimeInChange = function () {
+    if (adTimeIn.value === '12:00') {
+      adTimeOut.options[0].selected = true;
+    } else if (adTimeIn.value === '13:00') {
+      adTimeOut.options[1].selected = true;
+    } else if (adTimeIn.value === '14:00') {
+      adTimeOut.options[2].selected = true;
+    }
+  };
+
+  var onTimeOutChange = function () {
+    if (adTimeOut.value === '12:00') {
+      adTimeIn.options[0].selected = true;
+    } else if (adTimeOut.value === '13:00') {
+      adTimeIn.options[1].selected = true;
+    } else if (adTimeOut.value === '14:00') {
+      adTimeIn.options[2].selected = true;
+    }
+  };
+
+  adType.addEventListener('change', onTypeChange);
+  adTimeIn.addEventListener('change', onTimeInChange);
+  adTimeOut.addEventListener('change', onTimeOutChange);
+
   window.form = {
-    onFormChange: onFormChange
+    onFormChange: onFormChange,
   };
 })();
