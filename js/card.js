@@ -2,7 +2,6 @@
 
 (function () {
   var map = document.querySelector('.map');
-  var activePin = map.querySelector('.map__pin--active');
   var filtersContainer = map.querySelector('.map__filters-container');
 
   var cardTemplate = document.querySelector('#card')
@@ -77,28 +76,31 @@
     cardElement.querySelector('.popup__description').textContent = ad.offer.description;
     cardElement.querySelector('.popup__avatar').src = ad.author.avatar;
 
-    cardClose.addEventListener('click', onCardCloseClick);
-    document.addEventListener('keydown', onCardCloseKeydown);
-
     var onCardCloseClick = function (evt) {
       if (evt.button === window.constants.LEFT_BUTTON) {
-        removeOpenCard();
+        closePopup();
       }
       cardClose.removeEventListener('click', onCardCloseClick);
     }
 
     var onCardCloseKeydown = function (evt) {
       if (evt.key === window.constants.ESCAPE) {
-        removeOpenCard();
+        closePopup();
         
       }
       document.removeEventListener('keydown', onCardCloseKeydown);
     }
 
-    var removeOpenCard = function () {
+    var closePopup = function () {
+      if (map.querySelector('.map__pin--active')) {
+        map.querySelector('.map__pin--active').classList.remove('map__pin--active');
+      }
+
       map.querySelector('.map__card').remove();
-      window.pin.pinElement.classList.remove('map__pin--active');
     };
+
+    cardClose.addEventListener('click', onCardCloseClick);
+    document.addEventListener('keydown', onCardCloseKeydown);
 
     renderFeatures(ad.offer.features, cardFeatures);
     renderPhotos(ad.offer.photos, cardPhotos);
@@ -106,8 +108,12 @@
     return cardElement;
   };
 
-  var showCard = function (itemAds) {
-    map.insertBefore(renderCard(itemAds), filtersContainer);
+  var showCard = function (ad) {
+    if (map.querySelector('.map__pin--active')) {
+      map.querySelector('.map__pin--active').classList.remove('map__pin--active');
+    }
+    
+    map.insertBefore(renderCard(ad), filtersContainer);
   };
 
   window.card = {
