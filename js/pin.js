@@ -5,13 +5,12 @@
 
   var map = document.querySelector('.map');
   var mapPins = map.querySelector('.map__pins');
-  var pinElement;
   var pinTemplate = document.querySelector('#pin')
   .content
   .querySelector('.map__pin');
 
   var renderPin = function (ad) {
-    pinElement = pinTemplate.cloneNode(true);
+    var pinElement = pinTemplate.cloneNode(true);
     var imgChange = pinElement.querySelector('img');
     pinElement.style = 'left: ' + (Math.round(ad.location.x - window.constants.WIDTH_PIN / 2)) + 'px; top: ' + (Math.round(ad.location.y - window.constants.WIDTH_PIN)) + 'px';
     imgChange.src = ad.author.avatar;
@@ -26,12 +25,11 @@
     };
     
     var onPinClick = function (evt) {
-      if (evt.button === window.constants.LEFT_BUTTON) {
+      if (evt.button === window.constants.LEFT_BUTTON) { 
         openPopup();
         pinElement.classList.add('map__pin--active');
+        
       }
-
-      pinElement.removeEventListener('click', onPinClick);
     };
    
     var onPinKeydown = function (evt) {
@@ -39,8 +37,6 @@
         openPopup();
         pinElement.classList.add('map__pin--active');
       }
-
-      pinElement.removeEventListener('keydown', onPinKeydown);
     };
     
     pinElement.addEventListener('click', onPinClick);
@@ -67,6 +63,5 @@
   window.pin = {
     renderPin: renderPin,
     getFragment: getFragment,
-    pinElement: pinElement,
   };
 })();
