@@ -41,20 +41,20 @@
   //   errorHandler: errorHandler
   // };
   var QUANTITY_ADS = 8;
-var AD_ADDRESS = '350, 340';
-var AD_PRICE_MIN = 0;
-var AD_PRICE_MAX = 10000;
-var AD_GUESTS_ROOMS_MIN = 1;
-var AD_GUESTS_ROOMS_MAX = 3;
-var AD_TITLES = ['Двухкомнатная квартира с видом на океан!', 'Трехкомнатная квартира для семейного отдыха', 'Роскошные апартаменты'];
-var AD_TYPES = ['palace', 'flat', 'house', 'bungalo'];
-var ADS_CHECK = ['12:00', '13:00', '14:00'];
-var AD_FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
-var AD_DESCRIPTIONS = ['Все необходимые удобства и красивый вид из окна.', 'Удобное месторасположение, рядом исторический музей и ТРЦ.'];
-var AD_PHOTOS = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
+  var AD_ADDRESS = '350, 340';
+  var AD_PRICE_MIN = 0;
+  var AD_PRICE_MAX = 10000;
+  var AD_GUESTS_ROOMS_MIN = 1;
+  var AD_GUESTS_ROOMS_MAX = 3;
+  var AD_TITLES = ['Двухкомнатная квартира с видом на океан!', 'Трехкомнатная квартира для семейного отдыха', 'Роскошные апартаменты'];
+  var AD_TYPES = ['palace', 'flat', 'house', 'bungalo'];
+  var ADS_CHECK = ['12:00', '13:00', '14:00'];
+  var AD_FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+  var AD_DESCRIPTIONS = ['Все необходимые удобства и красивый вид из окна.', 'Удобное месторасположение, рядом исторический музей и ТРЦ.'];
+  var AD_PHOTOS = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
 
   var ads = [];
-  
+
   var getRandomNumber = function (adArr) {
     return Math.floor(Math.random() * adArr.length);
   };
@@ -103,5 +103,5 @@ var AD_PHOTOS = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o
 
   window.info = {
     ads: ads,
-  }
+  };
 })();

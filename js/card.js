@@ -64,7 +64,7 @@
     if (evt.button === window.constants.LEFT_BUTTON) {
       closePopup();
     }
-  }
+  };
 
   var onCardCloseKeydown = function (evt) {
     if (evt.key === window.constants.ESCAPE) {
@@ -100,7 +100,7 @@
     if (map.querySelector('.map__pin--active')) {
       map.querySelector('.map__pin--active').classList.remove('map__pin--active');
     }
-    
+
     map.insertBefore(renderCard(ad), filtersContainer);
   };
 

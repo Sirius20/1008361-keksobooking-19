@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 var WIDTH_PIN = 65;
 var WIDTH_PIN_TIP = 22;
@@ -24,10 +24,10 @@ var mapPins = map.querySelector('.map__pins');
 var pinTemplate = document.querySelector('#pin')
 .content
 .querySelector('.map__pin');
-var filtersContainer = map.querySelector('.map__filters-container');
-var cardTemplate = document.querySelector('#card')
-.content
-.querySelector('.map__card');
+// var filtersContainer = map.querySelector('.map__filters-container');
+// var cardTemplate = document.querySelector('#card')
+// .content
+// .querySelector('.map__card');
 var adForm = document.querySelector('.ad-form');
 var fieldsDisabled = document.querySelectorAll('fieldset');
 var mapFilters = document.querySelector('.map__filters');

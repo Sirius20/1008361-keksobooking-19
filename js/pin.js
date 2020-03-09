@@ -20,25 +20,25 @@
       if (map.querySelector('.map__card') !== null) {
         map.querySelector('.map__card').remove();
       }
-    
+
       window.card.showCard(ad);
     };
-    
+
     var onPinClick = function (evt) {
-      if (evt.button === window.constants.LEFT_BUTTON) { 
+      if (evt.button === window.constants.LEFT_BUTTON) {
         openPopup();
         pinElement.classList.add('map__pin--active');
-        
+
       }
     };
-   
+
     var onPinKeydown = function (evt) {
       if (evt.key === window.constants.ENTER) {
         openPopup();
         pinElement.classList.add('map__pin--active');
       }
     };
-    
+
     pinElement.addEventListener('click', onPinClick);
     pinElement.addEventListener('keydown', onPinKeydown);
 
