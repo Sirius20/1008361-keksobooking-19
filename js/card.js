@@ -1,12 +1,12 @@
 'use strict';
 
 (function () {
-  // var map = document.querySelector('.map');
-  // var activePin = map.querySelector('.map__pin--active');
+  var map = document.querySelector('.map');
+  var filtersContainer = map.querySelector('.map__filters-container');
+
   var cardTemplate = document.querySelector('#card')
   .content
   .querySelector('.map__card');
-
 
   var renderTypeCard = function (arr) {
     if (arr === 'flat') {
@@ -64,7 +64,7 @@
     var cardElement = cardTemplate.cloneNode(true);
     var cardFeatures = cardElement.querySelector('.popup__features');
     var cardPhotos = cardElement.querySelector('.popup__photos');
-    // var cardClose = cardElement.querySelector('.popup__close');
+    var cardClose = cardElement.querySelector('.popup__close');
 
     cardElement.querySelector('.popup__title').textContent = ad.offer.title;
     cardElement.querySelector('.popup__text--address').textContent = ad.offer.address;
@@ -75,29 +75,31 @@
     cardElement.querySelector('.popup__description').textContent = ad.offer.description;
     cardElement.querySelector('.popup__avatar').src = ad.author.avatar;
 
-    // cardClose.addEventListener('mousedown', onCardCloseClick);
-    // document.addEventListener('keydown', onCardCloseKeydown);
+    var onCardCloseClick = function (evt) {
+      if (evt.button === window.constants.LEFT_BUTTON) {
+        closePopup();
+      }
+      cardClose.removeEventListener('click', onCardCloseClick);
+    }
 
-    // var onCardCloseClick = function (evt) {
-    //   if (evt.button === window.constants.LEFT_BUTTON) {
-    //     removeOpenCard();
-    //   }
-    // }
+    var onCardCloseKeydown = function (evt) {
+      if (evt.key === window.constants.ESCAPE) {
+        closePopup();
+        
+      }
+      document.removeEventListener('keydown', onCardCloseKeydown);
+    }
 
-    // var onCardCloseKeydown = function (evt) {
-    //   if (evt.key === window.constants.ESCAPE) {
-    //     removeOpenCard();
-    //   }
-    // }
+    var closePopup = function () {
+      if (map.querySelector('.map__pin--active')) {
+        map.querySelector('.map__pin--active').classList.remove('map__pin--active');
+      }
 
-    // var removeOpenCard = function () {
-    //   cardElement.remove();
-    //   if (activePin) {
-    //     activePin.classList.remove('map__pin--active');
-    //   }
+      map.querySelector('.map__card').remove();
+    };
 
-    //   document.removeEventListener('keydown', onCardCloseKeydown);
-    // }
+    cardClose.addEventListener('click', onCardCloseClick);
+    document.addEventListener('keydown', onCardCloseKeydown);
 
     renderFeatures(ad.offer.features, cardFeatures);
     renderPhotos(ad.offer.photos, cardPhotos);
@@ -105,17 +107,16 @@
     return cardElement;
   };
 
-  // var getFragment = function () {
-  //   var fragment = document.createDocumentFragment();
-  //   for (var i = 0; i < ads.length; i++) {
-  //     fragment.appendChild(renderCard(ads[i]));
-  //   }
-  //   map.insertBefore(fragment, filtersContainer);
-  // }
-  // getFragment();
+  var showCard = function (ad) {
+    if (map.querySelector('.map__pin--active')) {
+      map.querySelector('.map__pin--active').classList.remove('map__pin--active');
+    }
+    
+    map.insertBefore(renderCard(ad), filtersContainer);
+  };
 
   window.card = {
     renderCard: renderCard,
-    // getFragment: getFragment
+    showCard: showCard,
   };
 })();
