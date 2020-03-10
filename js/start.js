@@ -23,7 +23,7 @@
     for (var s = 0; s < blockSelects.length; s++) {
       blockSelects[s].setAttribute('disabled', 'disabled');
     }
-    inputAddress.value =  mapPinX + ', ' + mapPinY;
+    inputAddress.value = mapPinX + ', ' + mapPinY;
   };
 
   window.start = {

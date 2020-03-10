@@ -6,7 +6,7 @@
   var X_MAX = 1200;
   var Y_MIN = 130;
   var Y_MAX = 630;
-  
+
   var map = document.querySelector('.map');
   var mapPins = map.querySelector('.map__pins');
   var mapPinMain = mapPins.querySelector('.map__pin--main');
@@ -55,12 +55,12 @@
     };
 
     var onPinMainMouseUp = function () {
-  
+
       document.removeEventListener('mousemove', onPinMainMouseMove);
       document.removeEventListener('mouseup', onPinMainMouseUp);
 
     };
-  
+
     document.addEventListener('mousemove', onPinMainMouseMove);
     document.addEventListener('mouseup', onPinMainMouseUp);
   };
@@ -70,5 +70,5 @@
   window.move = {
     onPinMainMouseDown: onPinMainMouseDown,
   };
-  
+
 })();

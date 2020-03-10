@@ -31,7 +31,6 @@
     var mapPinX = Math.round(mapPinMain.offsetLeft - window.constants.WIDTH_PIN / 2);
     inputAddress.value = 'left: ' + mapPinX + '; top: ' + tipPinY + ';';
   };
-  
 
   window.active = {
     getActivation: getActivation,
