@@ -9,9 +9,9 @@
   var blockSelects = mapFilters.querySelectorAll('select');
   var mapPinMain = mapPins.querySelector('.map__pin--main');
 
-  var inputAddress = adForm.querySelector('input[name=address]'); // строка адреса
-  var mapPinX = Math.round(mapPinMain.offsetLeft + window.constants.WIDTH_PIN / 2);
-  var mapPinY = Math.round(mapPinMain.offsetTop + window.constants.WIDTH_PIN / 2);
+  var inputAddress = adForm.querySelector('#address'); // строка адреса
+  var mapPinX = Math.round(mapPinMain.offsetLeft - window.constants.WIDTH_PIN / 2);
+  var mapPinY = Math.round(mapPinMain.offsetTop - window.constants.WIDTH_PIN / 2);
 
   var getStartPage = function () {
     mapFilters.classList.add('ad-form--disabled');
@@ -23,7 +23,7 @@
     for (var s = 0; s < blockSelects.length; s++) {
       blockSelects[s].setAttribute('disabled', 'disabled');
     }
-    inputAddress.value = 'left: ' + mapPinX + '; top: ' + mapPinY + ';';
+    inputAddress.value =  mapPinX + ', ' + mapPinY;
   };
 
   window.start = {
