@@ -83,6 +83,13 @@
       adTimeIn.options[2].selected = true;
     }
   };
+  
+  adForm.addEventListener('submit', function (evt) {
+    window.upload(new FormData(adForm), function (response) {
+      window.start.getStartPage();
+    });
+    evt.preventDefault();
+  });
 
   adType.addEventListener('change', onTypeChange);
   adTimeIn.addEventListener('change', onTimeInChange);

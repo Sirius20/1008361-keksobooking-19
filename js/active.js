@@ -21,9 +21,8 @@
     for (var b = 0; b < blockSelects.length; b++) {
       blockSelects[b].removeAttribute('disabled');
     }
-    window.pin.getFragment();
-    // window.card.getFragment();
-    // window.load(window.info.successHandler, window.info.errorHandler);
+    // window.pin.getFragment();
+    window.load(window.info.successHandler, window.info.errorHandler);
   };
 
   var searchAddress = function () {

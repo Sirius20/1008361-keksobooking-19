@@ -45,13 +45,13 @@
     return pinElement;
   };
 
-  var getFragment = function () {
-    var fragment = document.createDocumentFragment();
-    for (var j = 0; j < window.info.ads.length; j++) {
-      fragment.appendChild(renderPin(window.info.ads[j]));
-    }
-    mapPins.appendChild(fragment);
-  };
+  // var getFragment = function () {
+  //   var fragment = document.createDocumentFragment();
+  //   for (var j = 0; j < window.info.ads.length; j++) {
+  //     fragment.appendChild(renderPin(window.info.ads[j]));
+  //   }
+  //   mapPins.appendChild(fragment);
+  // };
 
   // до 7.2
   // var render = function (data) {
@@ -62,6 +62,6 @@
   // }
   window.pin = {
     renderPin: renderPin,
-    getFragment: getFragment,
+    // getFragment: getFragment,
   };
 })();
