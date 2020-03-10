@@ -4,7 +4,7 @@
   // var MAX_QUANTITY_ADS = 5;
 
   var map = document.querySelector('.map');
-  var mapPins = map.querySelector('.map__pins');
+  // var mapPins = map.querySelector('.map__pins');
   var pinTemplate = document.querySelector('#pin')
   .content
   .querySelector('.map__pin');
