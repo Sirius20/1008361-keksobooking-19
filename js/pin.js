@@ -10,9 +10,9 @@
   .querySelector('.map__pin');
 
   var renderPin = function (ad) {
-    var pinElement = pinTemplate.cloneNode(true);
-    var imgChange = pinElement.querySelector('img');
-    pinElement.style = 'left: ' + (Math.round(ad.location.x - window.constants.WIDTH_PIN / 2)) + 'px; top: ' + (ad.location.y - window.constants.HEIGHT_PIN_TIP) + 'px';
+    var pinElem = pinTemplate.cloneNode(true);
+    var imgChange = pinElem.querySelector('img');
+    pinElem.style = 'left: ' + (Math.round(ad.location.x - window.constants.WIDTH_PIN / 2)) + 'px; top: ' + (ad.location.y - window.constants.HEIGHT_PIN_TIP) + 'px';
     imgChange.src = ad.author.avatar;
     imgChange.alt = ad.offer.title;
 
@@ -27,7 +27,7 @@
     var onPinClick = function (evt) {
       if (evt.button === window.constants.LEFT_BUTTON) {
         openPopup();
-        pinElement.classList.add('map__pin--active');
+        pinElem.classList.add('map__pin--active');
 
       }
     };
@@ -35,14 +35,14 @@
     var onPinKeydown = function (evt) {
       if (evt.key === window.constants.ENTER) {
         openPopup();
-        pinElement.classList.add('map__pin--active');
+        pinElem.classList.add('map__pin--active');
       }
     };
 
-    pinElement.addEventListener('click', onPinClick);
-    pinElement.addEventListener('keydown', onPinKeydown);
+    pinElem.addEventListener('click', onPinClick);
+    pinElem.addEventListener('keydown', onPinKeydown);
 
-    return pinElement;
+    return pinElem;
   };
 
   // var getFragment = function () {

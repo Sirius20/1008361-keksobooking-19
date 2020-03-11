@@ -73,19 +73,19 @@
   };
 
   var renderCard = function (ad) {
-    var cardElement = cardTemplate.cloneNode(true);
-    var cardFeatures = cardElement.querySelector('.popup__features');
-    var cardPhotos = cardElement.querySelector('.popup__photos');
-    var cardClose = cardElement.querySelector('.popup__close');
+    var cardElem = cardTemplate.cloneNode(true);
+    var cardFeatures = cardElem.querySelector('.popup__features');
+    var cardPhotos = cardElem.querySelector('.popup__photos');
+    var cardClose = cardElem.querySelector('.popup__close');
 
-    cardElement.querySelector('.popup__title').textContent = ad.offer.title;
-    cardElement.querySelector('.popup__text--address').textContent = ad.offer.address;
-    cardElement.querySelector('.popup__text--price').textContent = ad.offer.price + '₽/ночь';
-    cardElement.querySelector('.popup__type').textContent = renderTypeCard(ad.offer.type);
-    cardElement.querySelector('.popup__text--capacity').textContent = renderRooms(ad.offer.rooms) + renderGuests(ad.offer.guests);
-    cardElement.querySelector('.popup__text--time').textContent = 'Заезд после ' + ad.offer.checkin + ', выезд до ' + ad.offer.checkout;
-    cardElement.querySelector('.popup__description').textContent = ad.offer.description;
-    cardElement.querySelector('.popup__avatar').src = ad.author.avatar;
+    cardElem.querySelector('.popup__title').textContent = ad.offer.title;
+    cardElem.querySelector('.popup__text--address').textContent = ad.offer.address;
+    cardElem.querySelector('.popup__text--price').textContent = ad.offer.price + '₽/ночь';
+    cardElem.querySelector('.popup__type').textContent = renderTypeCard(ad.offer.type);
+    cardElem.querySelector('.popup__text--capacity').textContent = renderRooms(ad.offer.rooms) + renderGuests(ad.offer.guests);
+    cardElem.querySelector('.popup__text--time').textContent = 'Заезд после ' + ad.offer.checkin + ', выезд до ' + ad.offer.checkout;
+    cardElem.querySelector('.popup__description').textContent = ad.offer.description;
+    cardElem.querySelector('.popup__avatar').src = ad.author.avatar;
 
     cardClose.addEventListener('click', onCardCloseClick);
     document.addEventListener('keydown', onCardCloseKeydown);
@@ -93,7 +93,7 @@
     renderFeatures(ad.offer.features, cardFeatures);
     renderPhotos(ad.offer.photos, cardPhotos);
 
-    return cardElement;
+    return cardElem;
   };
 
   var showCard = function (ad) {
@@ -116,5 +116,6 @@
   window.card = {
     renderCard: renderCard,
     showCard: showCard,
+    closePopup: closePopup,
   };
 })();

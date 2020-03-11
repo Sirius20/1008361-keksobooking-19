@@ -24,11 +24,12 @@
       blockSelects[s].setAttribute('disabled', 'disabled');
     }
     inputAddress.value = mapPinX + ', ' + mapPinY;
+    adForm.removeEventListener('submit', window.messages.onFormSubmit);
   };
 
   window.start = {
     mapPinX: mapPinX,
     mapPinY: mapPinY,
-    getStartPage: getStartPage
+    getStartPage: getStartPage,
   };
 })();

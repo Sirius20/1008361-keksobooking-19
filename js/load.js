@@ -32,6 +32,8 @@
   };
 
   window.upload = function (data, onSuccess) {
+    var URL = 'https://js.dump.academy/keksobooking';
+    
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
 

@@ -28,7 +28,7 @@
   var searchAddress = function () {
     var tipPinY = Math.round(mapPinMain.offsetTop - window.constants.HEIGHT_PIN_TIP);
     var mapPinX = Math.round(mapPinMain.offsetLeft - window.constants.WIDTH_PIN / 2);
-    inputAddress.value = 'left: ' + mapPinX + '; top: ' + tipPinY + ';';
+    inputAddress.value = mapPinX + ', ' + tipPinY;
   };
 
   window.active = {

@@ -11,7 +11,7 @@
       window.active.getActivation();
       window.active.searchAddress();
     }
-    mapPinMain.removeEventListener('mousedown', onPinMainClick);
+    adForm.addEventListener('submit', window.messages.onFormSubmit);
   };
 
   mapPinMain.addEventListener('keydown', function (evt) {

@@ -1,13 +1,18 @@
 'use strict';
 
 (function () {
+  var map = document.querySelector('.map');
   var adForm = document.querySelector('.ad-form');
+  var mapFilters = map.querySelector('.map__filters');
+  var mapPins = map.querySelector('.map__pins');
+  var mapPinMain = mapPins.querySelector('.map__pin--main');
   var roomQuantity = adForm.querySelector('#room_number');
   var guestQuantity = adForm.querySelector('#capacity');
   var adType = adForm.querySelector('#type');
   var adPrice = adForm.querySelector('#price');
   var adTimeIn = adForm.querySelector('#timein');
   var adTimeOut = adForm.querySelector('#timeout');
+  var resetButton = adForm.querySelector('.ad-form__reset');
 
   var onFormChange = function () {
     if (roomQuantity.value === '1' && guestQuantity.value === '2' ||
@@ -54,8 +59,10 @@
     } else if (adType.value === 'flat') {
       adPrice.min = '1000';
       adPrice.placeholder = '1000';
+      adPrice.step = '1000';
     } else if (adType.value === 'house') {
       adPrice.min = '5000';
+      adPrice.placeholder = '5000';
       adPrice.step = '5000';
     } else if (adType.value === 'palace') {
       adPrice.min = '10000';
@@ -91,11 +98,30 @@
     evt.preventDefault();
   });
 
+  var resetPage = function () {
+    map.classList.add('map--faded');
+    adForm.classList.add('ad-form--disabled');
+    adForm.reset();
+    mapFilters.reset();
+    adType.options[2].selected = true;
+    adPrice.placeholder = '5000';
+    window.messages.deleteCardsPins();
+    mapPinMain.style = 'left: ' + window.constants.PIN_START_X + 'px; top: ' + window.constants.PIN_START_Y + 'px;';
+    window.start.getStartPage();
+    resetButton.removeEventListener('click', resetPage);
+  };
+
+  var onResetButtonClick = function () {
+    resetPage();
+  };
+
   adType.addEventListener('change', onTypeChange);
   adTimeIn.addEventListener('change', onTimeInChange);
   adTimeOut.addEventListener('change', onTimeOutChange);
+  resetButton.addEventListener('click', onResetButtonClick);
 
   window.form = {
     onFormChange: onFormChange,
+    resetPage: resetPage,
   };
 })();
