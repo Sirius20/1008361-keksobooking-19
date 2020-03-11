@@ -17,7 +17,7 @@
     mapPins.removeChild(block);
   };
 
-   var onMessageDelete = function () {
+  var onMessageDelete = function () {
     var message = document.querySelector('div[name="message"]');
     if (message) {
       message.remove();
@@ -31,13 +31,13 @@
   };
 
   var onDocumentKeydownClose = function (evt) {
-    if  (evt.key === window.constants.ESCAPE) {
+    if (evt.key === window.constants.ESCAPE) {
       onMessageDelete();
     }
     document.removeEventListener('keydown', onDocumentKeydownClose);
   };
 
-  var ErrorMessage = function (messageText) {
+  var errorMessage = function (messageText) {
     var messageError = getMessageTemplate('error');
     messageError.querySelector('.error__message').textContent = messageText;
     document.querySelector('main').insertAdjacentElement('afterbegin', messageError);
@@ -60,10 +60,10 @@
     window.form.resetPage();
   };
 
-    // Помошник, обрабатывающий ошибки отправки данных формы на сервер
+  // Помошник, обрабатывающий ошибки отправки данных формы на сервер
   var showErrorPopup = function (response) {
-    ErrorMessage(response);
-    popupMessageClose()
+    errorMessage(response);
+    popupMessageClose();
     window.form.resetPage();
   };
 

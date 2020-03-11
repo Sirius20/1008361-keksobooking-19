@@ -91,13 +91,6 @@
     }
   };
 
-  adForm.addEventListener('submit', function (evt) {
-    window.upload(new FormData(adForm), function (response) {
-      window.start.getStartPage();
-    });
-    evt.preventDefault();
-  });
-
   var resetPage = function () {
     map.classList.add('map--faded');
     adForm.classList.add('ad-form--disabled');
