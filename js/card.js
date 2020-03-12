@@ -114,8 +114,7 @@
   };
 
   window.card = {
-    renderCard: renderCard,
-    showCard: showCard,
+    show: showCard,
     closePopup: closePopup,
   };
 })();

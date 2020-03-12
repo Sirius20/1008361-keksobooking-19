@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  
+
   var StatusCode = {
     OK: 200
   };

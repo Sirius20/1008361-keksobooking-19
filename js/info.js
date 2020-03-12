@@ -1,27 +1,21 @@
 'use strict';
 
 (function () {
+  var filters = document.querySelector('.map__filters');
+  var filtersHouse = filters.querySelector('#housing-type');
+  var ads = [];
 
-  var map = document.querySelector('.map');
-  var mapPins = map.querySelector('.map__pins');
-
-  var successHandler = function (ads) {
-    var block = document.createElement('div');
-    block.setAttribute('name', 'pins');
-    var fragment = document.createDocumentFragment();
-    for (var i = 0; i < ads.length; i++) {
-      fragment.appendChild(window.pin.renderPin(ads[i]));
-    }
-    block.appendChild(fragment);
-    mapPins.appendChild(block);
+  var successHandler = function (data) {
+    ads = data;
+    filtersHouse.addEventListener('change', function () {
+      
+      window.messages.deleteCardsPins();
+      window.pin.render(window.filters.getfilterType(ads));
+      
+    });
+    
   };
-  // var ads = [];
-
-  // var successHandler = function (data) {
-  //   ads = data;
-  //   window.pin.render(ads);
-  // };
-
+  
   var errorHandler = function (errorMessage) {
     var node = document.createElement('div');
     node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
