@@ -8,7 +8,7 @@
   var mapFilters = document.querySelector('.map__filters');
   var blockSelects = mapFilters.querySelectorAll('select');
   var mapPinMain = mapPins.querySelector('.map__pin--main');
-  var inputAddress = adForm.querySelector('input[name=address]');
+  var inputAddress = adForm.querySelector('#address');
 
   var getActivation = function () {
     map.classList.remove('map--faded');
@@ -21,12 +21,14 @@
     for (var b = 0; b < blockSelects.length; b++) {
       blockSelects[b].removeAttribute('disabled');
     }
-    window.load(window.data.successHandler, window.data.errorHandler);
+    // window.pin.getFragment();
+    window.load(window.info.successHandler, window.info.errorHandler);
   };
 
   var searchAddress = function () {
-    var tipPinY = Math.round(mapPinMain.offsetTop + window.constants.WIDTH_PIN + window.constants.WIDTH_PIN_TIP);
-    inputAddress.value = 'left: ' + window.start.mapPinX + '; top: ' + tipPinY + ';';
+    var tipPinY = Math.round(mapPinMain.offsetTop - window.constants.HEIGHT_PIN_TIP);
+    var mapPinX = Math.round(mapPinMain.offsetLeft - window.constants.WIDTH_PIN / 2);
+    inputAddress.value = mapPinX + ', ' + tipPinY;
   };
 
   window.active = {
