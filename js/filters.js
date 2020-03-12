@@ -6,9 +6,9 @@
 
   var defaultFilterValue = 'any';
 
-//   filtersHouse.addEventListener('change', function () {
-//     window.messages.deleteCardsPins();
-//   });
+  //   filtersHouse.addEventListener('change', function () {
+  //     window.messages.deleteCardsPins();
+  //   });
 
   var getfilterType = function (ads) {
     return ads.filter(function (ad) {

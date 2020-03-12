@@ -8,14 +8,14 @@
   var successHandler = function (data) {
     ads = data;
     filtersHouse.addEventListener('change', function () {
-      
+
       window.messages.deleteCardsPins();
       window.pin.render(window.filters.getfilterType(ads));
-      
+
     });
-    
+
   };
-  
+
   var errorHandler = function (errorMessage) {
     var node = document.createElement('div');
     node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';

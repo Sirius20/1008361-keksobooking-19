@@ -53,10 +53,11 @@
       block.appendChild(renderPin(data[i]));
       mapPins.appendChild(block);
     }
-  }
+  };
+
   window.pin = {
     render: render,
     MAX_QUANTITY_ADS: MAX_QUANTITY_ADS,
-    
+
   };
 })();
