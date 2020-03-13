@@ -7,10 +7,10 @@
 
   var successHandler = function (data) {
     ads = data;
-    filtersHouse.addEventListener('change', function () {
+    filters.addEventListener('change', function () {
 
       window.messages.deleteCardsPins();
-      window.pin.render(window.filters.getfilterType(ads));
+      window.pin.render(window.filters.getFilters(ads));
 
     });
 
