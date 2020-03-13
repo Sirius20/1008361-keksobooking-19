@@ -2,7 +2,7 @@
 
 (function () {
   var filters = document.querySelector('.map__filters');
-  var filtersHouse = filters.querySelector('#housing-type');
+  // var filtersHouse = filters.querySelector('#housing-type');
   var ads = [];
 
   var successHandler = function (data) {

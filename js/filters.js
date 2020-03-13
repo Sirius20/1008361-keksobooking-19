@@ -11,16 +11,16 @@
   var filterRooms = filters.querySelector('#housing-rooms');
   var filterGuests = filters.querySelector('#housing-guests');
   var filterFeatures = Array.from(filters.querySelectorAll('input[type=checkbox]:checked'));
-  
 
   var defaultFilterValue = 'any';
 
+  // все функции фильтры лежат в одной большой, вызывается в info
   var getFilters = function (ads) {
 
     var getfilterHouse = ads.filter(function (ad) {
       return filtersHouse.value !== defaultFilterValue ? ad.offer.type === filtersHouse.value : ad.offer.type;
     });
-    
+
     var getPriceFilter = getfilterHouse.filter(function (ad) {
       if (filterPrice.value === 'low') {
         return ad.offer.price < MIN_PRICE;
@@ -31,28 +31,30 @@
       } else if (filterPrice.value === defaultFilterValue) {
         return ad.offer.type;
       }
+      return true;
     });
-    
+
     var getRoomsFilter = getPriceFilter.filter(function (ad) {
       return filterRooms.value !== defaultFilterValue ? ad.offer.rooms === parseInt(filterRooms.value, 10) : ad.offer.rooms;
     });
 
     var getGuestsFilter = getRoomsFilter.filter(function (ad) {
       return filterGuests.value !== defaultFilterValue ? ad.offer.guests === parseInt(filterGuests.value, 10) : ad.offer.guests;
+    });
+  // переменная с фичами, которая так и не заработала, 
+  // чуть ниже лежит еще один не работающий вариант
+    var featuresFilter = getGuestsFilter.filter(function (ad) {
+      return filterFeatures.every(function (featuresValue) {
+        return ad.offer.features.includes(featuresValue);
       });
-
-      var featuresFilter = getGuestsFilter.filter(function (ad) {
-        return filterFeatures.every(function (featuresValue) {
-          return ad.offer.features.includes(featuresValue);
-        });
-      });
+    });
 
     // var featuresFilter = getGuestsFilter.filter(function (ad) {
     //   return filterFeatures.every(function (checkbox) {
     //     return ad.offer.features.indexOf(checkbox.value) !== -1;
     //   });
     // });
-      
+
     return featuresFilter;
   };
 
