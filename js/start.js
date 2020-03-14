@@ -10,8 +10,8 @@
   var mapPinMain = mapPins.querySelector('.map__pin--main');
 
   var inputAddress = adForm.querySelector('#address'); // строка адреса
-  var mapPinX = Math.round(mapPinMain.offsetLeft - window.constants.WIDTH_PIN / 2);
-  var mapPinY = Math.round(mapPinMain.offsetTop - window.constants.WIDTH_PIN / 2);
+  var mapPinX = Math.round(mapPinMain.offsetLeft - window.constants.WIDTH_PIN_MAIN / 2);
+  var mapPinY = Math.round(mapPinMain.offsetTop - window.constants.WIDTH_PIN_MAIN / 2);
 
   var getStartPage = function () {
     mapFilters.classList.add('ad-form--disabled');

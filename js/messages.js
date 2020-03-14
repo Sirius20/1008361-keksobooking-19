@@ -59,7 +59,7 @@
   // Помощник, выполняющий отправку данных формы на сервер
   var onFormSubmit = function (evt) {
     evt.preventDefault();
-    window.upload(new FormData(adForm), showSuccessPopup, showErrorPopup);
+    window.loader.upload(new FormData(adForm), showSuccessPopup, showErrorPopup);
   };
 
   // Помошник, выполняющийся после успешной отправки данных формы
