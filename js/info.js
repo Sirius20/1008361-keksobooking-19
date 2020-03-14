@@ -2,7 +2,6 @@
 
 (function () {
   var filters = document.querySelector('.map__filters');
-  
 
   var successHandler = function (data) {
     window.pin.render(window.filters.getFilters(data));

@@ -40,16 +40,16 @@
     var guestsFilter = roomsFilter.filter(function (ad) {
       return filterGuests.value !== defaultFilterValue ? ad.offer.guests === parseInt(filterGuests.value, 10) : ad.offer.guests;
     });
-    
+
     var getFeaturesFilter = function () {
       var filterFeatures = Array.from(filters.querySelectorAll('input[type=checkbox]:checked'));
       return guestsFilter.filter(function (ad) {
         return filterFeatures.every(function (featuresValue) {
           return ad.offer.features.includes(featuresValue.value);
-        });  
+        });
       });
     };
-    
+
     return getFeaturesFilter();
   };
 

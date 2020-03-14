@@ -3,7 +3,7 @@
 (function () {
   // Количество гостей или комнат
   var Quantity = {
-    ONE: 1, 
+    ONE: 1,
     TWO: 2,
     THREE: 3,
     NO_GUESTS: 100
@@ -118,7 +118,7 @@
     adForm.classList.add('ad-form--disabled');
     adForm.reset();
     mapFilters.reset();
-    adPrice.placeholder = Price.FLAT_PRICE;;
+    adPrice.placeholder = Price.FLAT_PRICE;
     window.messages.deleteCardsPins();
     mapPinMain.style = 'left: ' + window.constants.PIN_START_X + 'px; top: ' + window.constants.PIN_START_Y + 'px;';
     window.start.getStartPage();
