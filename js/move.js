@@ -45,13 +45,13 @@
       var PinMainY = mapPinMain.offsetTop - shift.y;
       var PinMainX = mapPinMain.offsetLeft - shift.x;
 
-      var left = limitPinMove((X_MIN - Math.round(window.constants.WIDTH_PIN / 2)), (X_MAX - Math.round(window.constants.WIDTH_PIN / 2)), PinMainX);
+      var left = limitPinMove((X_MIN - Math.round(window.constants.WIDTH_PIN_MAIN / 2)), (X_MAX - Math.round(window.constants.WIDTH_PIN_MAIN / 2)), PinMainX);
       var top = limitPinMove((Y_MIN - window.constants.HEIGHT_PIN_TIP), (Y_MAX - window.constants.HEIGHT_PIN_TIP), PinMainY);
 
       mapPinMain.style.top = top + 'px';
       mapPinMain.style.left = left + 'px';
 
-      inputAddress.value = (left + Math.round(window.constants.WIDTH_PIN / 2)) + ', ' + (top + window.constants.HEIGHT_PIN_TIP);
+      inputAddress.value = (left + Math.round(window.constants.WIDTH_PIN_MAIN / 2)) + ', ' + (top + window.constants.HEIGHT_PIN_TIP);
     };
 
     var onPinMainMouseUp = function () {

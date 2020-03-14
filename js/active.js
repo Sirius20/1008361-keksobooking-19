@@ -13,7 +13,6 @@
   var getActivation = function () {
     map.classList.remove('map--faded');
     adForm.classList.remove('ad-form--disabled');
-    mapFilters.classList.remove('ad-form--disabled');
     mapFilters.removeAttribute('disabled');
     for (var r = 0; r < fieldsDisabled.length; r++) {
       fieldsDisabled[r].removeAttribute('disabled');
@@ -21,13 +20,12 @@
     for (var b = 0; b < blockSelects.length; b++) {
       blockSelects[b].removeAttribute('disabled');
     }
-    // window.pin.getFragment();
-    window.load(window.info.successHandler, window.info.errorHandler);
+    window.loader.load(window.info.successHandler, window.info.errorHandler);
   };
 
   var searchAddress = function () {
     var tipPinY = Math.round(mapPinMain.offsetTop - window.constants.HEIGHT_PIN_TIP);
-    var mapPinX = Math.round(mapPinMain.offsetLeft - window.constants.WIDTH_PIN / 2);
+    var mapPinX = Math.round(mapPinMain.offsetLeft - window.constants.WIDTH_PIN_MAIN / 2);
     inputAddress.value = mapPinX + ', ' + tipPinY;
   };
 

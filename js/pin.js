@@ -12,7 +12,7 @@
   var renderPin = function (ad) {
     var pinElem = pinTemplate.cloneNode(true);
     var imgChange = pinElem.querySelector('img');
-    pinElem.style = 'left: ' + (Math.round(ad.location.x - window.constants.WIDTH_PIN / 2)) + 'px; top: ' + (ad.location.y - window.constants.HEIGHT_PIN_TIP) + 'px';
+    pinElem.style = 'left: ' + (Math.round(ad.location.x - window.constants.WIDTH_PIN / 2)) + 'px; top: ' + (ad.location.y - window.constants.HEIGHT_PIN) + 'px';
     imgChange.src = ad.author.avatar;
     imgChange.alt = ad.offer.title;
 
@@ -45,7 +45,7 @@
     return pinElem;
   };
 
-  var render = function (data) {
+  var render = window.debounce(function (data) {
     var block = document.createElement('div');
     block.setAttribute('name', 'pins');
     var takeNumber = data.length > MAX_QUANTITY_ADS ? MAX_QUANTITY_ADS : data.length;
@@ -53,7 +53,7 @@
       block.appendChild(renderPin(data[i]));
       mapPins.appendChild(block);
     }
-  };
+  });
 
   window.pin = {
     render: render,
