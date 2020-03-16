@@ -50,7 +50,7 @@
     var mapPinX = Math.round(mapPinMain.offsetLeft - window.constants.WIDTH_PIN_MAIN / 2);
     inputAddress.value = mapPinX + ', ' + tipPinY;
   };
-  
+
   var onPinMainClick = function (evt) {
     if (evt.button === window.constants.LEFT_BUTTON) {
       getActivation();
