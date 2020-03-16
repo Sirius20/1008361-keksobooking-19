@@ -13,7 +13,7 @@
 
   var defaultFilterValue = 'any';
 
-  // функция фильтрации, вызывается в info
+  // Функция фильтрации, вызывается в info
   var getFilters = function (ads) {
 
     var filterHouse = ads.filter(function (ad) {
