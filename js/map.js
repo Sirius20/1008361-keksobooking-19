@@ -24,8 +24,8 @@
     }
     inputAddress.value = mapPinX + ', ' + mapPinY;
     adForm.removeEventListener('submit', window.messages.onFormSubmit);
-    mapPinMain.addEventListener('mousedown', window.status_page.onPinMainClick);
-    mapPinMain.addEventListener('keydown', window.status_page.onPinMainKeydown);
+    mapPinMain.addEventListener('mousedown', window.statusPage.onPinMainClick);
+    mapPinMain.addEventListener('keydown', window.statusPage.onPinMainKeydown);
   };
 
   getStartPage();
