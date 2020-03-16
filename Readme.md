@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url]
 
 * Студент: [Наталья Денисова](https://up.htmlacademy.ru/javascript/19/user/1008361).
-* Наставник: [Альбина Токарчук](https://htmlacademy.ru/profile/id167491).
+* Наставник: [Мария Наг](https://htmlacademy.ru/profile/id47061).
 
 ---
 
