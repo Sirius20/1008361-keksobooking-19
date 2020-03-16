@@ -46,7 +46,7 @@
     inputAddress.value = mapPinX + ', ' + tipPinY;
   };
 
-  window.status_page = {
+  window.statusPage = {
     onPinMainClick: onPinMainClick,
     onPinMainKeydown: onPinMainKeydown,
   };

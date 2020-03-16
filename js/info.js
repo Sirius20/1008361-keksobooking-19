@@ -7,7 +7,7 @@
     window.pin.render(window.filters.getFilters(data));
     filters.classList.remove('ad-form--disabled');
     window.messages.deleteCardsPins();
-    
+
     filters.addEventListener('change', function () {
       window.messages.deleteCardsPins();
       window.pin.render(window.filters.getFilters(data));
