@@ -103,11 +103,11 @@
     }
   };
 
-  var addListenerList = function () {  
-  adForm.addEventListener('change', onFormChange);
-  adForm.addEventListener('change', onTypeChange);
-  adTimeIn.addEventListener('change', onTimeInChange);
-  adTimeOut.addEventListener('change', onTimeOutChange);
+  var addListenerList = function () {
+    adForm.addEventListener('change', onFormChange);
+    adForm.addEventListener('change', onTypeChange);
+    adTimeIn.addEventListener('change', onTimeInChange);
+    adTimeOut.addEventListener('change', onTimeOutChange);
   };
 
   var removeListenerList = function () {

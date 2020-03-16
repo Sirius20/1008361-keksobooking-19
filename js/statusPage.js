@@ -14,7 +14,7 @@
   var adPrice = adForm.querySelector('#price');
   var resetButton = adForm.querySelector('.ad-form__reset');
 
-    var resetPage = function () {
+  var resetPage = function () {
     map.classList.add('map--faded');
     adForm.classList.add('ad-form--disabled');
     adForm.reset();
@@ -26,7 +26,7 @@
     mapPinMain.style = 'left: ' + window.constants.PIN_START_X + 'px; top: ' + window.constants.PIN_START_Y + 'px;';
     window.map.getStartPage();
   };
-  
+
   var getActivation = function () {
     map.classList.remove('map--faded');
     adForm.classList.remove('ad-form--disabled');
@@ -50,8 +50,6 @@
     var mapPinX = Math.round(mapPinMain.offsetLeft - window.constants.WIDTH_PIN_MAIN / 2);
     inputAddress.value = mapPinX + ', ' + tipPinY;
   };
-
-
   
   var onPinMainClick = function (evt) {
     if (evt.button === window.constants.LEFT_BUTTON) {

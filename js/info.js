@@ -4,15 +4,15 @@
   var filters = document.querySelector('.map__filters');
   var mapPins = document.querySelector('.map__pins');
 
-    // Удаление открытой карточки и меток
-    var deleteCardsPins = function () {
-      window.card.closePopup();
-      var block = mapPins.querySelector('div[name="pins"]');
-  
-      if (block !== null) {
-        mapPins.removeChild(block);
-      }
-    };
+  // Удаление открытой карточки и меток
+  var deleteCardsPins = function () {
+    window.card.closePopup();
+    var block = mapPins.querySelector('div[name="pins"]');
+
+    if (block !== null) {
+      mapPins.removeChild(block);
+    }
+  };
 
   var onSuccess = function (data) {
     window.pin.render(window.filters.getFilters(data));
