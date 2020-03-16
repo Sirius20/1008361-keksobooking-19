@@ -21,20 +21,13 @@
     TWO_PM: '14:00'
   };
 
-  var map = document.querySelector('.map');
   var adForm = document.querySelector('.ad-form');
-  var mapFilters = map.querySelector('.map__filters');
-  var mapPins = map.querySelector('.map__pins');
-  var mapPinMain = mapPins.querySelector('.map__pin--main');
   var roomQuantity = adForm.querySelector('#room_number');
   var guestQuantity = adForm.querySelector('#capacity');
   var adType = adForm.querySelector('#type');
   var adPrice = adForm.querySelector('#price');
   var adTimeIn = adForm.querySelector('#timein');
   var adTimeOut = adForm.querySelector('#timeout');
-  var resetButton = adForm.querySelector('.ad-form__reset');
-  var avatarPreview = adForm.querySelector('[class="ad-form-header__preview"] img');
-  var photosPreview = adForm.querySelector('.ad-form__photo');
 
   var onFormChange = function () {
     if (roomQuantity.value === Quantity.ONE && guestQuantity.value === Quantity.TWO ||
@@ -110,32 +103,22 @@
     }
   };
 
-  var resetPage = function () {
-    map.classList.add('map--faded');
-    adForm.classList.add('ad-form--disabled');
-    adForm.reset();
-    mapFilters.reset();
-    avatarPreview.src = 'img/muffin-grey.svg';
-    photosPreview.innerHTML = '';
-    adPrice.placeholder = Price.FLAT_PRICE;
-    window.messages.deleteCardsPins();
-    mapPinMain.style = 'left: ' + window.constants.PIN_START_X + 'px; top: ' + window.constants.PIN_START_Y + 'px;';
-    window.map.getStartPage();
-    resetButton.removeEventListener('click', resetPage);
-  };
-
-  var onResetButtonClick = function () {
-    resetPage();
-  };
-
+  var addListenerList = function () {  
   adForm.addEventListener('change', onFormChange);
   adForm.addEventListener('change', onTypeChange);
   adTimeIn.addEventListener('change', onTimeInChange);
   adTimeOut.addEventListener('change', onTimeOutChange);
-  resetButton.addEventListener('click', onResetButtonClick);
+  };
+
+  var removeListenerList = function () {
+    adForm.removeEventListener('change', onFormChange);
+    adForm.removeEventListener('change', onTypeChange);
+    adTimeIn.removeEventListener('change', onTimeInChange);
+    adTimeOut.removeEventListener('change', onTimeOutChange);
+  };
 
   window.form = {
-    onFormChange: onFormChange,
-    resetPage: resetPage,
+    addListenerList: addListenerList,
+    removeListenerList: removeListenerList,
   };
 })();

@@ -2,32 +2,36 @@
 
 (function () {
   var filters = document.querySelector('.map__filters');
+  var mapPins = document.querySelector('.map__pins');
 
-  var successHandler = function (data) {
+    // Удаление открытой карточки и меток
+    var deleteCardsPins = function () {
+      window.card.closePopup();
+      var block = mapPins.querySelector('div[name="pins"]');
+  
+      if (block !== null) {
+        mapPins.removeChild(block);
+      }
+    };
+
+  var onSuccess = function (data) {
     window.pin.render(window.filters.getFilters(data));
     filters.classList.remove('ad-form--disabled');
-    window.messages.deleteCardsPins();
+    deleteCardsPins();
 
     filters.addEventListener('change', function () {
-      window.messages.deleteCardsPins();
+      deleteCardsPins();
       window.pin.render(window.filters.getFilters(data));
     });
   };
 
-  var errorHandler = function (errorMessage) {
-    var node = document.createElement('div');
-    node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
-    node.style.position = 'absolute';
-    node.style.left = 0;
-    node.style.right = 0;
-    node.style.fontSize = '30px';
-
-    node.textContent = errorMessage;
-    document.body.insertAdjacentElement('afterbegin', node);
+  var onError = function (errorMessage) {
+    window.messages.showErrorPopup(errorMessage);
   };
 
   window.info = {
-    successHandler: successHandler,
-    errorHandler: errorHandler
+    onSuccess: onSuccess,
+    onError: onError,
+    deleteCardsPins: deleteCardsPins,
   };
 })();

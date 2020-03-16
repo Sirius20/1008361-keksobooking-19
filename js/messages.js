@@ -2,7 +2,6 @@
 
 (function () {
   var adForm = document.querySelector('.ad-form');
-  var mapPins = document.querySelector('.map__pins');
 
   // Извлечение щаблона сообщения об успешном размещении объявления
   var getMessageTemplate = function (messageType) {
@@ -10,16 +9,6 @@
     var message = messageTemplate.cloneNode(true);
     message.setAttribute('name', 'message');
     return message;
-  };
-
-  // Удаление открытой карточки и меток
-  var deleteCardsPins = function () {
-    window.card.closePopup();
-    var block = mapPins.querySelector('div[name="pins"]');
-
-    if (block !== null) {
-      mapPins.removeChild(block);
-    }
   };
 
   // Функция скрытия сообщений
@@ -66,19 +55,19 @@
   var showSuccessPopup = function () {
     document.querySelector('main').insertAdjacentElement('afterbegin', getMessageTemplate('success'));
     popupMessageClose();
-    window.form.resetPage();
+    window.statusPage.reset();
   };
 
   // Помощник, обрабатывающий ошибки отправки данных формы на сервер
   var showErrorPopup = function (response) {
     errorMessage(response);
     popupMessageClose();
-    window.form.resetPage();
+    window.statusPage.reset();
   };
 
   window.messages = {
     onFormSubmit: onFormSubmit,
-    deleteCardsPins: deleteCardsPins,
+    showErrorPopup: showErrorPopup,
   };
 
 })();
