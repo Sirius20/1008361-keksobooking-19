@@ -3,14 +3,13 @@
 (function () {
   // Количество гостей или комнат
   var Quantity = {
-    ONE: 1,
-    TWO: 2,
-    THREE: 3,
-    NO_GUESTS: 100
+    ONE: '1',
+    TWO: '2',
+    THREE: '3',
+    NO_GUESTS: '100'
   };
 
   var Price = {
-    BUNGALO_STEP: '10',
     FLAT_PRICE: '1000',
     HOUSE_PRICE: '5000',
     PALACE_PRICE: '10000'
@@ -40,55 +39,51 @@
     roomQuantity.value === Quantity.ONE && guestQuantity.value === Quantity.THREE ||
     roomQuantity.value === Quantity.ONE && guestQuantity.value === '0') {
 
-      guestQuantity.setCustomValidity('Только одно спальное место!');
-    } else if (roomQuantity.value === Quantity.ONE && guestQuantity.value === Quantity.ONE_ROOM) {
-      guestQuantity.setCustomValidity('');
+      roomQuantity.setCustomValidity('Только одно спальное место');
+    } else if (roomQuantity.value === Quantity.ONE && guestQuantity.value === Quantity.ONE) {
+      roomQuantity.setCustomValidity('');
     }
 
     if (roomQuantity.value === Quantity.TWO && guestQuantity.value === Quantity.THREE ||
     roomQuantity.value === Quantity.TWO && guestQuantity.value === '0') {
 
-      guestQuantity.setCustomValidity('Только два спальных места!');
+      roomQuantity.setCustomValidity('Только два спальных места');
     } else if (roomQuantity.value === Quantity.TWO && guestQuantity.value === Quantity.TWO ||
-    roomQuantity.value === Quantity.TWO && guestQuantity.value === Quantity.ONE_ROOM) {
-      guestQuantity.setCustomValidity('');
+    roomQuantity.value === Quantity.TWO && guestQuantity.value === Quantity.ONE) {
+      roomQuantity.setCustomValidity('');
     }
 
     if (roomQuantity.value === Quantity.THREE && guestQuantity.value === '0') {
 
-      guestQuantity.setCustomValidity('Только три спальных места!');
+      roomQuantity.setCustomValidity('Жилое помещение максимум для трёх человек');
     } else if (roomQuantity.value === Quantity.THREE && guestQuantity.value === Quantity.THREE ||
     roomQuantity.value === Quantity.THREE && guestQuantity.value === Quantity.TWO ||
-    roomQuantity.value === Quantity.THREE && guestQuantity.value === Quantity.ONE_ROOM) {
-      guestQuantity.setCustomValidity('');
+    roomQuantity.value === Quantity.THREE && guestQuantity.value === Quantity.ONE) {
+      roomQuantity.setCustomValidity('');
     }
 
     if (roomQuantity.value === Quantity.NO_GUESTS && guestQuantity.value === Quantity.THREE ||
     roomQuantity.value === Quantity.NO_GUESTS && guestQuantity.value === Quantity.TWO ||
-    roomQuantity.value === Quantity.NO_GUESTS && guestQuantity.value === Quantity.ONE_ROOM) {
+    roomQuantity.value === Quantity.NO_GUESTS && guestQuantity.value === Quantity.ONE) {
 
-      guestQuantity.setCustomValidity('Нежилое помещение');
+      roomQuantity.setCustomValidity('Нежилое помещение');
     } else if (roomQuantity.value === Quantity.NO_GUESTS && guestQuantity.value === '0') {
-      guestQuantity.setCustomValidity('');
+      roomQuantity.setCustomValidity('');
     }
   };
 
   var onTypeChange = function () {
     if (adType.value === 'bungalo') {
       adPrice.placeholder = '0';
-      adPrice.step = Price.BUNGALO_STEP;
       adPrice.min = '0';
     } else if (adType.value === 'flat') {
       adPrice.placeholder = Price.FLAT_PRICE;
-      adPrice.step = Price.FLAT_PRICE;
       adPrice.min = Price.FLAT_PRICE;
     } else if (adType.value === 'house') {
       adPrice.placeholder = Price.HOUSE_PRICE;
-      adPrice.step = Price.HOUSE_PRICE;
       adPrice.min = Price.HOUSE_PRICE;
     } else if (adType.value === 'palace') {
       adPrice.placeholder = Price.PALACE_PRICE;
-      adPrice.step = Price.HOUSE_PRICE;
       adPrice.min = Price.PALACE_PRICE;
     }
   };
@@ -129,7 +124,8 @@
     resetPage();
   };
 
-  adType.addEventListener('change', onTypeChange);
+  adForm.addEventListener('change', onFormChange);
+  adForm.addEventListener('change', onTypeChange);
   adTimeIn.addEventListener('change', onTimeInChange);
   adTimeOut.addEventListener('change', onTimeOutChange);
   resetButton.addEventListener('click', onResetButtonClick);

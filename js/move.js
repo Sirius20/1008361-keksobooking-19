@@ -12,7 +12,7 @@
   var mapPinMain = mapPins.querySelector('.map__pin--main');
   var inputAddress = document.querySelector('#address');
 
-  // ограничитель движения метки по карте
+  // Ограничитель движения метки по карте
   var limitPinMove = function (min, max, current) {
     if (current < min) {
       return min;

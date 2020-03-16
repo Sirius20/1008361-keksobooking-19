@@ -8,8 +8,7 @@
   var mapFilters = document.querySelector('.map__filters');
   var blockSelects = mapFilters.querySelectorAll('select');
   var mapPinMain = mapPins.querySelector('.map__pin--main');
-
-  var inputAddress = adForm.querySelector('#address'); // строка адреса
+  var inputAddress = adForm.querySelector('#address');
   var mapPinX = Math.round(mapPinMain.offsetLeft - window.constants.WIDTH_PIN_MAIN / 2);
   var mapPinY = Math.round(mapPinMain.offsetTop - window.constants.WIDTH_PIN_MAIN / 2);
 

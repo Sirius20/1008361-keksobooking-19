@@ -23,5 +23,4 @@
 
   window.start.getStartPage();
   mapPinMain.addEventListener('mousedown', onPinMainClick);
-  adForm.addEventListener('change', window.form.onFormChange);
 })();

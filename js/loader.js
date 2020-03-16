@@ -3,6 +3,7 @@
 (function () {
 
   var OK = 200;
+ 
 
   var TIMEOUT_IN_MS = 10000;
 
@@ -22,7 +23,7 @@
       onError('Произошла ошибка соединения');
     });
     xhr.addEventListener('timeout', function () {
-      onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс. Проверьте наличие доступа в интернет');
+      onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс. Убедитесь в наличии доступа в интернет');
     });
 
     xhr.timeout = TIMEOUT_IN_MS;
@@ -40,9 +41,7 @@
     xhr.addEventListener('load', function () {
       if (xhr.status === OK) {
         onSuccess(xhr.response);
-      } else {
-        onError('Статус ответа: ' + xhr.status + ' ' + xhr.statusText);
-      }
+      } 
     });
 
     xhr.addEventListener('error', function () {

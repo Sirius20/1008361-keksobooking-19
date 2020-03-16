@@ -4,7 +4,7 @@
   var adForm = document.querySelector('.ad-form');
   var mapPins = document.querySelector('.map__pins');
 
-  // извлечение щаблона сообщения об успешном размещении объявления
+  // Извлечение щаблона сообщения об успешном размещении объявления
   var getMessageTemplate = function (messageType) {
     var messageTemplate = document.querySelector('#' + messageType).content.querySelector('.' + messageType);
     var message = messageTemplate.cloneNode(true);
@@ -12,7 +12,7 @@
     return message;
   };
 
-  // удаление открытой карточки и меток
+  // Удаление открытой карточки и меток
   var deleteCardsPins = function () {
     window.card.closePopup();
     var block = mapPins.querySelector('div[name="pins"]');
@@ -22,14 +22,14 @@
     }
   };
 
-  // функция скрытия сообщений
+  // Функция скрытия сообщений
   var popupMessageClose = function () {
     var message = document.querySelector('div[name="message"]');
     document.addEventListener('keydown', onDocumentKeydownClose);
     message.addEventListener('click', onMessageDelete);
   };
 
-  // обработчик удаление открытого сообщения
+  // Обработчик удаление открытого сообщения
   var onMessageDelete = function () {
     var message = document.querySelector('div[name="message"]');
     if (message) {
@@ -37,7 +37,7 @@
     }
   };
 
-  // скрытие сообщения по клавише
+  // Скрытие сообщения по клавише
   var onDocumentKeydownClose = function (evt) {
     if (evt.key === window.constants.ESCAPE) {
       onMessageDelete();
@@ -45,7 +45,7 @@
     document.removeEventListener('keydown', onDocumentKeydownClose);
   };
 
-  // сообщение об ошибке
+  // Сообщение об ошибке
   var errorMessage = function (messageText) {
     var messageError = getMessageTemplate('error');
     messageError.querySelector('.error__message').textContent = messageText;
@@ -62,14 +62,14 @@
     window.loader.upload(new FormData(adForm), showSuccessPopup, showErrorPopup);
   };
 
-  // Помошник, выполняющийся после успешной отправки данных формы
+  // Помощник, выполняющийся после успешной отправки данных формы
   var showSuccessPopup = function () {
     document.querySelector('main').insertAdjacentElement('afterbegin', getMessageTemplate('success'));
     popupMessageClose();
     window.form.resetPage();
   };
 
-  // Помошник, обрабатывающий ошибки отправки данных формы на сервер
+  // Помощник, обрабатывающий ошибки отправки данных формы на сервер
   var showErrorPopup = function (response) {
     errorMessage(response);
     popupMessageClose();
