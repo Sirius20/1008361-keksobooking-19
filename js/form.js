@@ -33,6 +33,8 @@
   var adTimeIn = adForm.querySelector('#timein');
   var adTimeOut = adForm.querySelector('#timeout');
   var resetButton = adForm.querySelector('.ad-form__reset');
+  var avatarPreview = adForm.querySelector('[class="ad-form-header__preview"] img');
+  var photosPreview = adForm.querySelector('.ad-form__photo');
 
   var onFormChange = function () {
     if (roomQuantity.value === Quantity.ONE && guestQuantity.value === Quantity.TWO ||
@@ -113,10 +115,12 @@
     adForm.classList.add('ad-form--disabled');
     adForm.reset();
     mapFilters.reset();
+    avatarPreview.src = 'img/muffin-grey.svg';
+    photosPreview.innerHTML = '';
     adPrice.placeholder = Price.FLAT_PRICE;
     window.messages.deleteCardsPins();
     mapPinMain.style = 'left: ' + window.constants.PIN_START_X + 'px; top: ' + window.constants.PIN_START_Y + 'px;';
-    window.start.getStartPage();
+    window.map.getStartPage();
     resetButton.removeEventListener('click', resetPage);
   };
 

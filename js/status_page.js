@@ -10,6 +10,20 @@
   var mapPinMain = mapPins.querySelector('.map__pin--main');
   var inputAddress = adForm.querySelector('#address');
 
+  var onPinMainClick = function (evt) {
+    if (evt.button === window.constants.LEFT_BUTTON) {
+      getActivation();
+      searchAddress();
+    }
+  };
+
+  var onPinMainKeydown = function (evt) {
+    if (evt.key === window.constants.ENTER) {
+      getActivation();
+      searchAddress();
+    }
+  };
+
   var getActivation = function () {
     map.classList.remove('map--faded');
     adForm.classList.remove('ad-form--disabled');
@@ -21,6 +35,9 @@
       select.removeAttribute('disabled');
     });
     window.loader.load(window.info.successHandler, window.info.errorHandler);
+    adForm.addEventListener('submit', window.messages.onFormSubmit);
+    mapPinMain.removeEventListener('mousedown', onPinMainClick);
+    mapPinMain.removeEventListener('keydown', onPinMainKeydown);
   };
 
   var searchAddress = function () {
@@ -29,8 +46,8 @@
     inputAddress.value = mapPinX + ', ' + tipPinY;
   };
 
-  window.active = {
-    getActivation: getActivation,
-    searchAddress: searchAddress
+  window.status_page = {
+    onPinMainClick: onPinMainClick,
+    onPinMainKeydown: onPinMainKeydown,
   };
 })();

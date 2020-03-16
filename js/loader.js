@@ -3,7 +3,6 @@
 (function () {
 
   var OK = 200;
- 
 
   var TIMEOUT_IN_MS = 10000;
 
@@ -41,7 +40,7 @@
     xhr.addEventListener('load', function () {
       if (xhr.status === OK) {
         onSuccess(xhr.response);
-      } 
+      }
     });
 
     xhr.addEventListener('error', function () {
