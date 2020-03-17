@@ -15,13 +15,13 @@
   };
 
   var onSuccess = function (data) {
-    window.pin.render(window.filters.getFilters(data));
+    window.pin.render(window.filters.getOffers(data));
     filters.classList.remove('ad-form--disabled');
     deleteCardsPins();
 
     filters.addEventListener('change', function () {
       deleteCardsPins();
-      window.pin.render(window.filters.getFilters(data));
+      window.pin.render(window.filters.getOffers(data));
     });
   };
 

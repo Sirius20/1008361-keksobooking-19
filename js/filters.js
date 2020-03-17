@@ -54,6 +54,6 @@
   };
 
   window.filters = {
-    getFilters: getFilters,
+    getOffers: getFilters,
   };
 })();
