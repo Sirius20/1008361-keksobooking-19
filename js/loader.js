@@ -7,7 +7,7 @@
   var TIMEOUT_IN_MS = 10000;
 
   var load = function (onSuccess, onError) {
-    var URL = 'https://js.dump.academy/keksobooking/data';
+    var URL = 'https://javascript.pages.academy/keksobooking/data';
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
 
@@ -32,7 +32,7 @@
   };
 
   var upload = function (data, onSuccess, onError) {
-    var URL = 'https://js.dump.academy/keksobooking';
+    var URL = 'https://javascript.pages.academy/keksobooking';
 
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
