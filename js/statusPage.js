@@ -66,7 +66,7 @@
   };
 
   var onResetButtonClick = function () {
-    window.statusPage.reset();
+    resetPage();
   };
 
   window.statusPage = {
